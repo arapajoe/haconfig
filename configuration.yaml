@@ -1,0 +1,68 @@
+
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+# http:
+#   base_url: example.duckdns.org:8123
+
+frontend:
+    themes: !include themes.yaml
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+
+#log level
+logger:
+  default: critical
+
+#recorder config
+recorder:
+  purge_keep_days: 1
+  purge_interval: 1
+  include:
+    domains:
+      - sensor
+
+# Telegram Bot
+telegram_bot:
+  - platform: polling
+    api_key: !secret telegram_api
+    allowed_chat_ids:
+      - !secret telegram_chat_id
+
+# Example configuration.yaml entry for the notifier
+notify:
+  - name: PING_PONG
+    platform: telegram
+    chat_id: !secret telegram_chat_id
+
+# Paneles, el del floorplan
+#panel_custom:
+#  - name: floorplan
+#    sidebar_title: Floorplan
+#    sidebar_icon: mdi:home
+#    url_path: floorplan
+#    config: !include floorplan.yaml
+    
+# Floorplan como state card
+#frontend:
+#  extra_html_url:
+#    - /local/custom_ui/state-card-floorplan.html
+    
+#binary_sensor:
+#  - platform: mqtt
+#    state_topic: dummy/floorplan/sensor
+#    name: Floorplan
+    
+#homeassistant:
+#  customize:    
+#    binary_sensor.floorplan:
+#      custom_ui_state_card: state-card-floorplan
+#      config: !include floorplan.yaml
+      
