@@ -1,0 +1,7 @@
+- platform: template
+  sensors:
+    # Outside temperature given by the weather entity
+    outdoor_temp:
+      friendly_name: "Outside Temperature"
+      unit_of_measurement: 'degrees'
+      value_template: "{{states.weather.casa.attributes.temperature}}"
