@@ -1,10 +1,5 @@
-
 # Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
-
-# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
-# http:
-#   base_url: example.duckdns.org:8123
 
 frontend:
     themes: !include themes.yaml
@@ -13,15 +8,23 @@ frontend:
 tts:
   - platform: google_translate
 
+# include other files
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
+sensor: !include sensor.yaml
+switch: !include switches.yaml
+binary_sensor: !include binary_sensor.yaml
+input_select: !include input_select.yaml
+input_boolean: !include input_boolean.yaml
+input_number: !include input_number.yaml
+input_text: !include input_text.yaml
 
-#log level
+# log level
 logger:
-  default: critical
+  default: error
 
-#recorder config
+# recorder config
 recorder:
   purge_keep_days: 1
   purge_interval: 1
@@ -36,7 +39,7 @@ telegram_bot:
     allowed_chat_ids:
       - !secret telegram_chat_id
 
-# Example configuration.yaml entry for the notifier
+# Notify section
 notify:
   - name: PING_PONG
     platform: telegram
