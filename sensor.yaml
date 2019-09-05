@@ -5,3 +5,4 @@
       friendly_name: "Outside Temperature"
       unit_of_measurement: 'ºC'
       value_template: "{{states.weather.casa.attributes.temperature}}"
+
