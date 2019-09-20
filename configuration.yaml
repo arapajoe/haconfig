@@ -45,5 +45,9 @@ notify:
     platform: telegram
     chat_id: !secret telegram_chat_id
       
-
+hacs:
+  token: !secret hacs_token
   
+shelly:
+      
+      

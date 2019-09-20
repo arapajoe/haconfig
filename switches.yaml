@@ -1,0 +1,7 @@
+#- platform: mqtt
+#  name: "Interruptor Salon"
+#  state_topic: "shellies/shellyplug-s-041761/relay/0"
+#  command_topic: "shellies/shellyplug-s-041761/relay/0/command"
+#  payload_on: "on"
+#  payload_off: "off"
+#  retain: false

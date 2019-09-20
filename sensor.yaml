@@ -6,3 +6,11 @@
       unit_of_measurement: 'ºC'
       value_template: "{{states.weather.casa.attributes.temperature}}"
 
+#- platform: history_stats
+#  name: Door opened
+#  entity_id: binary_sensor.0x00158d0003eef226_contact
+#  state: 'on'
+#  type: time
+#  end: '{{ now() }}'
+#  duration:
+#    days: 7
